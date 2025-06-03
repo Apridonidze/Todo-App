@@ -1,11 +1,10 @@
 import './App.css';
 
-
 import { useState } from 'react';
 
 import Input from './assets/Input';
 import Tasks from './assets/Tasks';
-
+import Footer from './assets/Footer';
 
 
 function App() {
@@ -42,13 +41,11 @@ function App() {
 
 
   return (
-    <div className='main-container'>
-      <h1>Get Things Done!</h1>
-      <Input  handleSubmit={handleSubmit} setTasks={setTasks} setInput={setInput} input={input}/>
-      <Tasks setTasks={setTasks} tasks={tasks} finishedTasks={finishedTasks} setFinishedTasks={setFinishedTasks}  error={error}/>
-      {/* add local  storage to save tasks and after date changes delete all from localstorage()*/}
-      {/*add label to input / pass error to Input component and render it on label*/}
-
+    <div className='main-container container d d-block border border-2 rounded-3 my-5  p-3'>
+         <h1 className='text-center p-3'>Get Things Done!</h1>
+          <Input  handleSubmit={handleSubmit} setTasks={setTasks} setInput={setInput} input={input} error={error}/>
+          <Tasks setTasks={setTasks} tasks={tasks} finishedTasks={finishedTasks} setFinishedTasks={setFinishedTasks}  />
+          <Footer setFinishedTasks={setFinishedTasks} setTasks={setTasks} tasksLength={tasks.length} finishedTasksLength={finishedTasks.length}/>
     </div>
   );
 };

@@ -64,17 +64,18 @@ export default function Tasks({setTasks, tasks, setFinishedTasks,finishedTasks})
     }
 
     return(
-        <div className='Tasks-container'>
+        <div className='Tasks-container'> 
     
             <div className="todo-tasks-container d d-block d-block border-bottom border-2 rounded-0 mb-3" > 
 
                 <div className="container-header d d-flex justify-content-between align-center text-center py-3">
                     <span className='d-flex gap-3 align-items-center fs-4'><img src={todaysTasks} alt="Todays Tasks Icon" style={{width: '30px'}} />Finished Tasks :</span>
-                    <img src={collapseIcon} alt='collapse icon' style={{width: '15px',transform: `rotate(${transfromVar2})`,transition:"all 0.25s"}} onClick={() => collapsedFnct2()} className='d d-sm' type="button" data-bs-toggle="collapse" data-bs-target="#collapseDiv" aria-expanded="true" aria-controls="collapseDiv" /> 
+                    <img src={collapseIcon} alt='collapse icon' style={{width: '15px',transform: `rotate(${transfromVar2})`,transition:"all 0.25s"}} onClick={() => collapsedFnct2()}  type="button" data-bs-toggle="collapse" data-bs-target="#collapseDiv" aria-expanded="true" aria-controls="collapseDiv" /> 
                 </div>
 
                 <div className="collapse show " id='collapseDiv'>
-                  <ul className='list-group py-3' >
+
+                  <ul className='list-group py-3'>
                     {tasks == 0 ? <h1 className='fs-4 text-muted'>No Tasks Yet...</h1>:  tasks.map((task,index) => 
                         <li className='list-group-item d d-flex justify-content-between border border-secondary my-1 border rounded-1'
                             key={index}
@@ -85,9 +86,10 @@ export default function Tasks({setTasks, tasks, setFinishedTasks,finishedTasks})
                             onDragEnd={handleDrag} 
                             onDragOver={(e) => e.preventDefault()}>
 
-                            <img className='pe-auto' onClick={() => checkTask(index)} src={unchecked} alt='Check Task' 
-                            role='button'/> 
-                               <span>{task}</span>
+                            <span className='d d-flex gap-2 fs-5 align-items-center justify-content-start text-break lh-1'>
+                                <img onClick={() => checkTask(index)} src={unchecked} alt='Check Task' 
+                                role='button'/>{task}
+                            </span> 
                             <img src={deleteLogo} alt='Delete Task' 
                             role='button' onClick={() => deleteTask(index)} />
 
@@ -95,26 +97,30 @@ export default function Tasks({setTasks, tasks, setFinishedTasks,finishedTasks})
 
                     )} 
                    </ul>
+
                 </div>
+
             </div>
 
 
             <div className="finished-tasks-container py-3">
 
-                    <div className="container-header d d-flex justify-content-between align-center text-center py-2">
-                        <span className='d-flex gap-3 align-items-center fs-4'><img src={completedTaskIcon} alt="Completed Task Icon" style={{width: '30px'}} />Finished Tasks :</span>
-                        <img src={collapseIcon} alt='collapse icon' style={{width: '15px',transform: `rotate(${transfromVar})`,transition:"all 0.25s"}} onClick={() => collapsedFnct()} className='d d-sm' type="button" data-bs-toggle="collapse" data-bs-target="#collapseDiv2" aria-expanded="true" aria-controls="collapseDiv2" />
-                    </div>
+                <div className="container-header d d-flex justify-content-between align-center text-center py-2">
+                    <span className='d-flex gap-3 align-items-center fs-4 px-2'><img src={completedTaskIcon} alt="Completed Task Icon" style={{width: '30px'}} />Finished Tasks :</span>
+                    <img src={collapseIcon} alt='collapse icon' style={{width: '15px',transform: `rotate(${transfromVar})`,transition:"all 0.25s"}} onClick={() => collapsedFnct()} className='d d-sm' type="button" data-bs-toggle="collapse" data-bs-target="#collapseDiv2" aria-expanded="true" aria-controls="collapseDiv2" />
+                </div>
 
                 <div className='collapse show' id='collapseDiv2'>
+
                     <ul className='list-group d d-flex justify-content-between py-3'>
                         {finishedTasks == 0 ? <h1 className='fs-4 text-muted'>No Finished Tasks Yet...</h1> : finishedTasks.map((finishedTask,finishedIndex) => 
                         <li className='list-group-item d d-flex gap-3 my-1 border rounded-1' key={finishedIndex}>
                           <img src={checked} alt='Checked Task' 
                             role='button' onClick={() => uncheckTask(finishedIndex)}/>
-                          <span key={finishedIndex}>{finishedTask}</span>
+                          <span className='fs-5 text-break lh-1' key={finishedIndex}>{finishedTask}</span>
                         </li>)}
                     </ul> 
+
                 </div>
 
             </div>

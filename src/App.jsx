@@ -2,9 +2,9 @@ import './App.css';
 
 import { useState } from 'react';
 
-import Input from './assets/Input';
-import Tasks from './assets/Tasks';
-import Footer from './assets/Footer';
+import Input from './assets/Input'; /* importing assets*/
+import Tasks from './assets/Tasks'; /* importing assets*/
+import Footer from './assets/Footer'; /* importing assets*/
 
 
 function App() {
@@ -17,6 +17,9 @@ function App() {
 
 
   function handleSubmit(e){
+    
+    /* callback fnct which filters input from Input.jsx and sets error message */
+
     e.preventDefault();
 
 

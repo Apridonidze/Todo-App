@@ -13,14 +13,14 @@ export default function Footer({setFinishedTasks,setTasks,tasksLength,finishedTa
                 <div className="d d-flex justify-content-start gap-3 py-4 pr-1">
 
                     <span className="text-decoration-underline pe-auto fs-6" role="button" 
-                    onClick={() => {setTasks([])}}>Clear Tasks</span>
+                    onClick={() => {setTasks([])}}>Clear Tasks</span>                              {/*clear all tasks from unfinished tasklist */}
 
                     <span className="text-decoration-underline pe-auto fs-6" role="button" 
-                    onClick={() => {setFinishedTasks([])}}>Clear Finished Tasks</span>
+                    onClick={() => {setFinishedTasks([])}}>Clear Finished Tasks</span>             {/*clear all tasks from finished tasklist */}
 
 
                     <span className="text-decoration-underline pe-auto fs-6" role="button" 
-                    onClick={() => {setTasks([]) || setFinishedTasks([])}}>Clear All</span>
+                    onClick={() => {setTasks([]) || setFinishedTasks([])}}>Clear All</span>        {/*clear all tasks*/}
 
                 </div>
 

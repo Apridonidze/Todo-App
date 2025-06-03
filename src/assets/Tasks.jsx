@@ -1,33 +1,39 @@
-import checked from '../../src/img/finished-tasks-icon.svg';
-import unchecked from '../../src/img/unchecked-icon.svg' ;
-import deleteLogo from '../../src/img/delete-icon.svg';
-import completedTaskIcon from '../../src/img/completed-task-icon.svg';
-import todaysTasks from '../../src/img/todays-tasks-icon.svg';
-import collapseIcon from '../../src/img/collapse-icon.svg';
 import { useState } from 'react';
+
+
+import checked from '../../src/img/finished-tasks-icon.svg'; /* importing imgs*/
+import unchecked from '../../src/img/unchecked-icon.svg' ;/* importing imgs*/
+import deleteLogo from '../../src/img/delete-icon.svg'; /* importing imgs*/
+import completedTaskIcon from '../../src/img/completed-task-icon.svg'; /* importing imgs*/
+import todaysTasks from '../../src/img/todays-tasks-icon.svg'; /* importing imgs*/
+import collapseIcon from '../../src/img/collapse-icon.svg'; /* importing imgs*/
 
 
 export default function Tasks({setTasks, tasks, setFinishedTasks,finishedTasks}){
 
-    const [collapsed,setCollapsed] = useState(false)
-    const [collapsed2,setCollapsed2] = useState(false);
-    const [transfromVar,setTransfrom] = useState('');
-    const [transfromVar2,setTransfrom2] = useState('')
+    const [collapsed,setCollapsed] = useState(false);     /*collapse function's states*/
+    const [collapsed2,setCollapsed2] = useState(false);/*collapse function's states*/
+    const [transfromVar,setTransfrom] = useState(''); /*collapse function's states*/
+    const [transfromVar2,setTransfrom2] = useState(''); /*collapse function's states*/
 
     const deleteTask = (index) => {
         const updatedtask = tasks.filter((_,i) => i !== index);
-        setTasks(updatedtask)
+        setTasks(updatedtask);
+        /* deletes tasks from Tasks */
     };
 
     const checkTask = (index) => {
         setFinishedTasks(f => [...f, tasks[index]]) 
-        const updatedtask = tasks.filter((_,i) => i !== index)
-        setTasks(updatedtask)
+        const updatedtask = tasks.filter((_,i) => i !== index);
+        setTasks(updatedtask);
+        /*sets unfinished task's status to finished */
     };
     const uncheckTask = (finishedIndex) => {
-        setTasks(t => [...t,finishedTasks[finishedIndex]])
-        const updatedFinishedTask = finishedTasks.filter((_,i) => i !== finishedIndex)
-        setFinishedTasks(updatedFinishedTask)
+        setTasks(t => [...t,finishedTasks[finishedIndex]]);
+        const updatedFinishedTask = finishedTasks.filter((_,i) => i !== finishedIndex);
+        setFinishedTasks(updatedFinishedTask);
+        
+        /*sets finished task's status to unfinished */
     }
     
     let dragStartIndex = 0;
@@ -39,22 +45,28 @@ export default function Tasks({setTasks, tasks, setFinishedTasks,finishedTasks})
         tasksClone[dragStartIndex] = tasksClone[dragEndIndex]
         tasksClone[dragEndIndex] = temp;
         setTasks(tasksClone);
+
+        /*drag function for unfinished tasks */
     };
 
     const collapsedFnct = () => {
-        setCollapsed(!collapsed)
-        {collapsed ? setTransfrom('0deg') : setTransfrom('-180deg')}
+        setCollapsed(!collapsed);
+        {collapsed ? setTransfrom('0deg') : setTransfrom('-180deg')};
+
+        /*triggers collapse animation for unfinished tasks */
     }
 
     const collapsedFnct2 = () => {
-        setCollapsed2(!collapsed2)
-        {collapsed2 ? setTransfrom2('0deg') : setTransfrom2('-180deg')}
+        setCollapsed2(!collapsed2);
+        {collapsed2 ? setTransfrom2('0deg') : setTransfrom2('-180deg')};
+        /*triggers collapse animation for unfinished tasks */
+    
     }
 
     return(
         <div className='Tasks-container'>
     
-            <div className="todo-tasks-container d d-block d-block border-bottom border-2 rounded-0 mb-3" >
+            <div className="todo-tasks-container d d-block d-block border-bottom border-2 rounded-0 mb-3" > 
 
                 <div className="container-header d d-flex justify-content-between align-center text-center py-3">
                     <span className='d-flex gap-3 align-items-center fs-4'><img src={todaysTasks} alt="Todays Tasks Icon" style={{width: '30px'}} />Finished Tasks :</span>
